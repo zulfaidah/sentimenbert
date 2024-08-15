@@ -15,4 +15,3 @@ utils
 scikit-learn
 indobenchmark-toolkit
 unidecode
-https://github.com/ezaaputra/indonlu.git
