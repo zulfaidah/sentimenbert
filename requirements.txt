@@ -16,3 +16,4 @@ scikit-learn
 indobenchmark-toolkit
 unidecode
 streamlit_option_menu
+cuda-python
