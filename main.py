@@ -1,7 +1,7 @@
 import streamlit as st
 st.set_page_config(
     page_title="Sentimen IndoBERT",
-    page_icon="wordcloud.png"  # Path to your logo
+    page_icon="sentimen.png"  # Path to your logo
 )
 
 import pandas as pd
