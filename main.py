@@ -133,9 +133,9 @@ def Analisis_Sentimen(df):
     train_set, val_set = train_test_split(df, test_size=0.3, stratify=df.sentimen, random_state=1)
     val_set, test_set = train_test_split(val_set, test_size=0.33, stratify=val_set.sentimen, random_state=1)
 
-    print(f'Train shape: {train_set.shape}')
-    print(f'Val shape: {val_set.shape}')
-    print(f'Test shape: {test_set.shape}')
+    st.write(f'Train shape: {train_set.shape}')
+    st.write(f'Val shape: {val_set.shape}')
+    st.write(f'Test shape: {test_set.shape}')
 
     # export to tsv
     train_set.to_csv('train_set.tsv', sep='\t', header=None, index=False)
@@ -230,7 +230,7 @@ def Analisis_Sentimen(df):
                 total_train_loss/(i+1), get_lr(optimizer)))
 
         metrics = document_sentiment_metrics_fn(list_hyp_train, list_label)
-        print("(Epoch {}) TRAIN LOSS:{:.4f} {} LR:{:.8f}".format((epoch+1),
+        st.write("(Epoch {}) TRAIN LOSS:{:.4f} {} LR:{:.8f}".format((epoch+1),
             total_train_loss/(i+1), metrics_to_string(metrics), get_lr(optimizer)))
 
         # save train acc for learning curve
@@ -260,7 +260,7 @@ def Analisis_Sentimen(df):
             pbar.set_description("VALID LOSS:{:.4f} {}".format(total_loss/(i+1), metrics_to_string(metrics)))
 
         metrics = document_sentiment_metrics_fn(list_hyp, list_label)
-        print("(Epoch {}) VALID LOSS:{:.4f} {}".format((epoch+1),
+        st.write("(Epoch {}) VALID LOSS:{:.4f} {}".format((epoch+1),
             total_loss/(i+1), metrics_to_string(metrics)))
 
         # save validation acc for learning curve
