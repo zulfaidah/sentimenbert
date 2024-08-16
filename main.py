@@ -16,7 +16,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from collections import defaultdict
-
+import torch
+torch.cuda.empty_cache()
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
+device
 # NLP
 import nltk
 nltk.download('punkt')
@@ -52,6 +55,7 @@ st.set_page_config(
     page_title="Sentimen IndoBERT",
     page_icon="wordcloud.png"  # replace with the path to your logo
 )
+
 
 st.markdown("""
         <style>
@@ -198,6 +202,8 @@ def Analisis_Sentimen(df):
 
     # Tentukan optimizer
     optimizer = optim.Adam(model.parameters(), lr=3e-6)
+    model = model.cuda()
+
 
     # Train
     n_epochs = 5
@@ -230,7 +236,7 @@ def Analisis_Sentimen(df):
                 total_train_loss/(i+1), get_lr(optimizer)))
 
         metrics = document_sentiment_metrics_fn(list_hyp_train, list_label)
-        ("(Epoch {}) TRAIN LOSS:{:.4f} {} LR:{:.8f}".format((epoch+1),
+        st.write("(Epoch {}) TRAIN LOSS:{:.4f} {} LR:{:.8f}".format((epoch+1),
             total_train_loss/(i+1), metrics_to_string(metrics), get_lr(optimizer)))
 
         # save train acc for learning curve
@@ -260,7 +266,7 @@ def Analisis_Sentimen(df):
             pbar.set_description("VALID LOSS:{:.4f} {}".format(total_loss/(i+1), metrics_to_string(metrics)))
 
         metrics = document_sentiment_metrics_fn(list_hyp, list_label)
-        ("(Epoch {}) VALID LOSS:{:.4f} {}".format((epoch+1),
+        st.write("(Epoch {}) VALID LOSS:{:.4f} {}".format((epoch+1),
             total_loss/(i+1), metrics_to_string(metrics)))
 
         # save validation acc for learning curve
