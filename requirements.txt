@@ -2,7 +2,7 @@ streamlit
 pandas
 numpy
 textblob
-googletrans
+googletrans==4.0.0-rc1
 nltk
 sastrawi
 matplotlib
