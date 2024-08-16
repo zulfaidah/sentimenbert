@@ -1,4 +1,9 @@
 import streamlit as st
+st.set_page_config(
+    page_title="Sentimen IndoBERT",
+    page_icon="wordcloud.png"  # Path to your logo
+)
+
 import pandas as pd
 import numpy as np
 from textblob import TextBlob
@@ -50,11 +55,6 @@ stopword_factory = StopWordRemoverFactory()
 stopword_remover = stopword_factory.create_stop_word_remover()
 stemmer_factory = StemmerFactory()
 stemmer = stemmer_factory.create_stemmer()
-
-st.set_page_config(
-    page_title="Sentimen IndoBERT",
-    page_icon="wordcloud.png"  # replace with the path to your logo
-)
 
 st.markdown("""
         <style>
