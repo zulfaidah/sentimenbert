@@ -177,7 +177,7 @@ def Analisis_Sentimen(df):
     model = BertForSequenceClassification.from_pretrained('indobenchmark/indobert-base-p1', config=config)
 
     # Jumlah parameter
-    print(count_param(model))
+    (count_param(model))
 
     train_dataset_path = 'train_set.tsv'
     valid_dataset_path = 'val_set.tsv'
@@ -193,8 +193,8 @@ def Analisis_Sentimen(df):
     test_loader = DocumentSentimentDataLoader(dataset=test_dataset, max_seq_len=512, batch_size=32, num_workers=2, shuffle=False)
 
     w2i, i2w = DocumentSentimentDataset.LABEL2INDEX, DocumentSentimentDataset.INDEX2LABEL
-    print(w2i) # word to index
-    print(i2w) # index to word
+    (w2i) # word to index
+    (i2w) # index to word
 
     # Tentukan optimizer
     optimizer = optim.Adam(model.parameters(), lr=3e-6)
@@ -230,7 +230,7 @@ def Analisis_Sentimen(df):
                 total_train_loss/(i+1), get_lr(optimizer)))
 
         metrics = document_sentiment_metrics_fn(list_hyp_train, list_label)
-        st.write("(Epoch {}) TRAIN LOSS:{:.4f} {} LR:{:.8f}".format((epoch+1),
+        ("(Epoch {}) TRAIN LOSS:{:.4f} {} LR:{:.8f}".format((epoch+1),
             total_train_loss/(i+1), metrics_to_string(metrics), get_lr(optimizer)))
 
         # save train acc for learning curve
@@ -260,7 +260,7 @@ def Analisis_Sentimen(df):
             pbar.set_description("VALID LOSS:{:.4f} {}".format(total_loss/(i+1), metrics_to_string(metrics)))
 
         metrics = document_sentiment_metrics_fn(list_hyp, list_label)
-        st.write("(Epoch {}) VALID LOSS:{:.4f} {}".format((epoch+1),
+        ("(Epoch {}) VALID LOSS:{:.4f} {}".format((epoch+1),
             total_loss/(i+1), metrics_to_string(metrics)))
 
         # save validation acc for learning curve
