@@ -18,7 +18,7 @@ from sklearn.metrics import classification_report
 from collections import defaultdict
 import torch
 torch.cuda.empty_cache()
-device = "cuda:0" if torch.cuda.is_available() else "cpu"
+device = "cuda:0" if torch.cuda.is_available() else ""
 device
 # NLP
 import nltk
