@@ -56,7 +56,6 @@ st.set_page_config(
     page_icon="wordcloud.png"  # replace with the path to your logo
 )
 
-
 st.markdown("""
         <style>
             .stApp {
